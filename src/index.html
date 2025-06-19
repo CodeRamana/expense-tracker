@@ -36,7 +36,7 @@
         <!-- Welcome Section-->
         <section class="max-w-[1200px] w-[90%] mx-auto my-8 flex flex-col items-start justify-center gap-3.5 ">
             <div class="space-y-1">
-                <h1 class="text-4xl font-serif font-extrabold tracking-wider sm:text-5xl md:text-6xl">Welcome to
+                <h1 class="text-4xl font-serif font-extrabold tracking-normal sm:text-5xl md:text-6xl">Welcome to
                     FinTrack</h1>
                 <p class="text-[#4e7f97] text-lg dark:text-green-500">Manage your finances with ease.</p>
             </div>
@@ -46,8 +46,9 @@
                 Transactions</a>
         </section>
         <!-- Dashboard Section-->
-        <section class="max-w-[1200px] w-[90%] mx-auto my-8 grid grid-cols-4 grid-rows-2 gap-2.5 lg:grid-rows-1 ">
-            <div class="col-span-2 bg-gray-50 p-3 rounded-md flex flex-col justify-center items-center col-start-1 col-end-3 row-end-1 lg:col-span-1 lg:col-start-1 dark:bg-[#1E1E1E]">
+        <section class="max-w-[1200px] w-[90%] mx-auto my-8 grid grid-cols-4 gap-2.5 lg:grid-rows-1 ">
+            <div
+                class="col-span-2 bg-gray-50 p-3 rounded-md flex flex-col justify-center items-start sm:items-center col-start-1 col-end-3 row-end-1 lg:col-span-1 lg:col-start-1 dark:bg-[#1E1E1E]">
                 <div class="flex flex-col gap-2.5">
                     <div class="space-y-1">
                         <p class="font-serif text-lg italic dark:text-white">Total Income</p>
@@ -60,7 +61,8 @@
                         </span></a>
                 </div>
             </div>
-            <div class="col-span-2 bg-gray-50 p-3 rounded-md flex flex-col justify-center items-center col-start-3 col-end-5 row-end-1 lg:col-span-1 lg:col-start-4 dark:bg-[#1E1E1E]">
+            <div
+                class="col-span-2 bg-gray-50 p-3 rounded-md flex flex-col justify-center items-start sm:items-center col-start-3 col-end-5 row-end-1 lg:col-span-1 lg:col-start-4 dark:bg-[#1E1E1E]">
                 <div class="flex flex-col gap-2.5">
                     <div class="space-y-1">
                         <p class="font-serif text-lg italic dark:text-white">Total Expenses</p>
@@ -73,7 +75,8 @@
                         </span></a>
                 </div>
             </div>
-            <div class="col-span-4 bg-gray-50 p-3 rounded-md flex sm:justify-around items-center row-end-2 lg:col-span-2 lg:col-start-2 lg:col-end-4 lg:row-end-1 dark:bg-[#1E1E1E]">
+            <div
+                class="col-span-4 bg-gray-50 p-3 rounded-md flex sm:justify-around items-center row-end-2 lg:col-span-2 lg:col-start-2 lg:col-end-4 lg:row-end-1 dark:bg-[#1E1E1E]">
                 <div class="flex flex-col gap-2.5">
                     <div class="space-y-1">
                         <p class="font-serif text-lg italic dark:text-white">Net Balance</p>
@@ -85,17 +88,41 @@
                             arrow_outward
                         </span></a>
                 </div>
-                <img src="/assets/cartoon.jpg" class=" hidden w-[200px] rounded-2xl sm:block">
+                <img src="../assets/cartoon.jpg" class=" hidden w-[200px] rounded-2xl sm:block">
             </div>
         </section>
     </header>
     <main>
-        <!-- No Transactions available -->
-        <section></section>
+
         <!-- Recent Transactions -->
-        <section>
+        <section class="max-w-[1200px] w-[90%] mx-auto my-8 ">
+            <p class="text-xl font-serif font-extrabold tracking-wide sm:text-2xl md:text-3xl dark:text-white"> Recent
+                Transactions</p>
             <!-- Filter Tabs Section-->
-            <div></div>
+            <div class="flex bg-gray-50 my-3 p-3 rounded-2xl dark:bg-[#1E1E1E]">
+                <div
+                    class="cursor-pointer text-center text-lg hover:bg-white hover:rounded-2xl hover:font-extrabold hover:text-black grow-1">
+                    All</div>
+                <div
+                    class="cursor-pointer text-center text-lg hover:bg-white hover:rounded-2xl hover:font-extrabold hover:text-black grow-1">
+                    Income</div>
+                <div
+                    class="cursor-pointer text-center text-lg hover:bg-white hover:rounded-2xl hover:font-extrabold hover:text-black grow-1">
+                    Expense</div>
+            </div>
+            <!-- No Transactions available -->
+            <section class="my-5 flex flex-col justify-center items-center gap-5">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6doKv-x7CEAHJJCnOkALJ2IgmrLAcN6jPd1p-lPIxaMY_3uPLDF5koP8gE8xsWdd1Xq1wP472BuN5N-7ail5ELGuiKb2qKlrBYjqJGRA_HU-trXVqhBx4m3CvQj9iHUASPkcX0NV0YFveePY5QPfiSyzYD-6p_zgSZt6E30ibdRp138HPGhJ0eqTyB6mRN_lM-ChF8sKKL9LbssmYgfHJwVfGeqoZNOkCH1RVtsAHK1-3oj0pbRCnsOrSUpmilPDpew7AIPvdwwY
+" alt="Search image" class="w-56 rounded-2xl mx-auto">
+                <div class="text-center">
+                    <p class="font-extrabold font-serif text-lg dark:text-green-500">No Transactions yet</p>
+                    <p>Add your first Transactions to start tracking your finances</p>
+                </div>
+                <a href="#"
+                    class="inline-block bg-[#19a1e5] text-white px-3 py-2.5 font-bold rounded-md dark:bg-green-600">Add
+                    Transactions</a>
+
+            </section>
             <!-- Table Section -->
             <table></table>
 
