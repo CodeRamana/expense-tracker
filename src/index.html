@@ -123,8 +123,74 @@
                     Transactions</a>
 
             </section>
+            <!--Mobile Responsive Transactions List-->
+            <section class="max-w-[1200px] w-[90%] mx-auto my-8 flex flex-col gap-5 sm:hidden">
+                <div class="flex justify-between items-center bg-gray-50 px-3 py-2 rounded-2xl">
+                    <div class="flex flex-col items-start gap-1.5" >
+                        <p>2025-07-25</p>
+                         <p class="text-xl font-extrabold">Grocery Shopping</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5" >
+                        <p>Expense</p>
+                        <p class="bg-white px-3 py-2 text-xl font-extrabold rounded-xl">-50.00</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center bg-gray-50 px-5 py-2 rounded-2xl">
+                    <div class="flex flex-col items-start gap-1.5" >
+                        <p>2025-05-25</p>
+                        <p class="text-xl font-extrabold">Salary</p>
+                        
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5" >
+                        <p>Income</p>
+                        <p class="bg-white px-3 py-2 text-xl font-extrabold rounded-xl">1500.00</p>
+                    </div>
+                </div>
+            </section>
             <!-- Table Section -->
-            <table></table>
+            <table class="hidden sm:table max-w-[1200px] w-[90%] mx-auto my-8 border-collapse border border-gray-400">
+                <tr class="">
+                    <th class="border border-gray-300 text-center p-4">Date</th>
+                    <th class="border border-gray-300 text-center p-4">Description</th>
+                    <th class="border border-gray-300 text-center p-4">Category</th>
+                    <th class="border border-gray-300 text-center p-4">Amount</th>
+                    <th class="border border-gray-300 text-center p-4">Actions</th>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 text-center p-4">
+                        2025-07-25
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        Expense
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        Grocery Shopping
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        -50.00
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        <span><a href="#">Edit</a></span> | <span><a href="#">Delete</a></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 text-center p-4">
+                        2025-05-25
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        Income
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        Salary
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        1500.00
+                    </td>
+                    <td class="border border-gray-300 text-center p-4">
+                        <span><a href="#">Edit</a></span> | <span><a href="#">Delete</a></span>
+                    </td>
+                </tr>
+            </table>
 
         </section>
     </main>
