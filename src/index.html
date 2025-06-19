@@ -1,33 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./style.css">
     <title>FinTrack</title>
 </head>
-<body>
+
+<body class="font-[poppins] dark:bg-black dark:text-white">
     <header>
-        <!-- Navbar Section -->
-        <nav></nav>
+        <section class="bg-gray-50 dark:bg-[#1E1E1E]">
+            <!-- Navbar Section -->
+            <nav class="max-w-[1200px] w-[90%] mx-auto flex justify-between items-center h-20 ">
+                <div class="flex gap-2.5 items-center justify-center">
+                    <span class="material-symbols-outlined">
+                        calculate
+                    </span>
+                    <p class="text-2xl font-extrabold font-serif">FinTrack</p>
+                </div>
+
+                <ul class="hidden list-none sm:flex items-center  gap-2.5 md:gap-5">
+                    <li><a href="#" class="hover:font-bold">Home</a></li>
+                    <li><a href="#" class="hover:font-bold">Dashboard</a></li>
+                    <li><a href="#" class="hover:font-bold">Transactions</a></li>
+                </ul>
+                <span class="material-symbols-outlined">
+                    lightbulb
+                </span>
+            </nav>
+        </section>
+
         <!-- Welcome Section-->
-        <section></section>
+        <section class="max-w-[1200px] w-[90%] mx-auto my-8 flex flex-col items-start justify-center gap-3.5 ">
+            <div class="space-y-1">
+                <h1 class="text-4xl font-serif font-extrabold tracking-wider sm:text-5xl md:text-6xl">Welcome to
+                    FinTrack</h1>
+                <p class="text-[#4e7f97] text-lg dark:text-green-500">Manage your finances with ease.</p>
+            </div>
+
+            <a href="#"
+                class="inline-block bg-[#19a1e5] text-white px-3 py-2.5 font-bold rounded-md dark:bg-green-600">Add
+                Transactions</a>
+        </section>
         <!-- Dashboard Section-->
-        <section></section>
+        <section class="max-w-[1200px] w-[90%] mx-auto my-8 grid grid-cols-4 grid-rows-2 gap-2.5 lg:grid-rows-1 ">
+            <div class="col-span-2 bg-gray-50 p-3 rounded-md flex flex-col justify-center items-center col-start-1 col-end-3 row-end-1 lg:col-span-1 lg:col-start-1 dark:bg-[#1E1E1E]">
+                <div class="flex flex-col gap-2.5">
+                    <div class="space-y-1">
+                        <p class="font-serif text-lg italic dark:text-white">Total Income</p>
+                        <p class="text-2xl font-extrabold font-[poppins] dark:text-green-500">Rs:6333</p>
+                    </div>
+                    <a href="#"
+                        class="hidden sm:flex gap-2 bg-[#19a1e5] text-white px-3 py-2.5 font-bold rounded-md dark:bg-green-600">Income
+                        Transactions<span class="material-symbols-outlined">
+                            arrow_outward
+                        </span></a>
+                </div>
+            </div>
+            <div class="col-span-2 bg-gray-50 p-3 rounded-md flex flex-col justify-center items-center col-start-3 col-end-5 row-end-1 lg:col-span-1 lg:col-start-4 dark:bg-[#1E1E1E]">
+                <div class="flex flex-col gap-2.5">
+                    <div class="space-y-1">
+                        <p class="font-serif text-lg italic dark:text-white">Total Expenses</p>
+                        <p class="text-2xl font-extrabold font-[poppins] dark:text-green-500">Rs:6333</p>
+                    </div>
+                    <a href="#"
+                        class="hidden sm:flex gap-2 bg-[#19a1e5] text-white px-3 py-2.5 font-bold rounded-md dark:bg-green-600">Expenses
+                        Transactions<span class="material-symbols-outlined">
+                            arrow_outward
+                        </span></a>
+                </div>
+            </div>
+            <div class="col-span-4 bg-gray-50 p-3 rounded-md flex sm:justify-around items-center row-end-2 lg:col-span-2 lg:col-start-2 lg:col-end-4 lg:row-end-1 dark:bg-[#1E1E1E]">
+                <div class="flex flex-col gap-2.5">
+                    <div class="space-y-1">
+                        <p class="font-serif text-lg italic dark:text-white">Net Balance</p>
+                        <p class="text-2xl font-extrabold font-[poppins] dark:text-green-500">Rs:6333</p>
+                    </div>
+                    <a href="#"
+                        class="hidden sm:flex gap-2 bg-[#19a1e5] text-white px-3 py-2.5 font-bold rounded-md dark:bg-green-600">All
+                        Transactions<span class="material-symbols-outlined">
+                            arrow_outward
+                        </span></a>
+                </div>
+                <img src="../assets/cartoon.jpg" class=" hidden w-[200px] rounded-2xl sm:block">
+            </div>
+        </section>
     </header>
     <main>
         <!-- No Transactions available -->
-         <section></section>
+        <section></section>
         <!-- Recent Transactions -->
-         <section>
+        <section>
             <!-- Filter Tabs Section-->
-             <div></div>
-             <!-- Table Section -->
-              <table></table>
-              
-         </section>
+            <div></div>
+            <!-- Table Section -->
+            <table></table>
+
+        </section>
     </main>
-    
+
     <script src="./index.js"></script>
 </body>
+
 </html>
