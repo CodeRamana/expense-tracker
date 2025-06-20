@@ -28,6 +28,19 @@ const createMenuItems = (items) => {
 
 
 async function main(){
+
+    const mode = document.getElementById("mode");
+
+    mode.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        mode.textContent = "light_off";
+    } else {
+        mode.textContent = "lightbulb";
+    }
+});
+    
     const transactions = await getTransactions();
     if (transactions.length !== 0) {
         createMenuItems([{ name: "Home", href: "#" },
@@ -42,7 +55,28 @@ async function main(){
         noTransactions.classList.add("hidden");
     }
 
-    console.log(transactions)
+   const reduced = transactions.reduce((p,c)=>{
+        const category = c.category
+        console.log(!p[category])
+        if(p[category]){ 
+            p[category] = p[category] + c.amount;
+        }else{
+            p[category] = c.amount;
+        }
+        return p;
+    },{})
+
+    const income = document.getElementById("Income")
+    const expense = document.getElementById("Expense")
+    const balance = document.getElementById("Balance")
+
+    income.textContent = `Rs: ${reduced.Income}`;
+    expense.textContent = `Rs: -${reduced.Expense}`;
+    balance.textContent = `Rs: ${reduced.Income - reduced.Expense}`;
+    
+    document.getElementById("indicator").src =(reduced.Income > reduced.Expense) ? "../assets/rocket.png" : "../assets/cartoon.jpg";
+
+    console.log(reduced)
 }
 
 main();

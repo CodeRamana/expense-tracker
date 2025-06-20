@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer utilities{
     .icon-outlined {font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24;}
 
