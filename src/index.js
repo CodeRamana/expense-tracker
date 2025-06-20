@@ -174,12 +174,12 @@ const setDashboard = (filterTabs, transactions) => {
     const expense = document.getElementById("Expense")
     const balance = document.getElementById("Balance")
 
-    income.textContent = `Rs: ${reduced.Income}`;
+    income.textContent = `Rs: ${reduced.Income ?? 0}`;
     expense.textContent = `Rs: - ${reduced.Expense ?? 0}`;
-    balance.textContent = `Rs: ${reduced.Income - (reduced.Expense ?? 0)}`;
+    balance.textContent = `Rs: ${(reduced.Income ?? 0) - (reduced.Expense ?? 0)}`;
 
     //indicating the net balance in image dynamically.
-    document.getElementById("indicator").src = (reduced.Income > reduced.Expense) ? "../public/rocket.png" : "../public/cartoon.jpg";
+    document.getElementById("indicator").src = ((reduced.Income  ?? 0) > (reduced.Expense ?? 0)) ? "/rocket.png" : "/cartoon.jpg";
 
     // filtering the transactions data from the buttons in Dashboard
     const dashBoardBtn = document.querySelectorAll('#dashboard > div > div > a');
