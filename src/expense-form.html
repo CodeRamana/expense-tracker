@@ -23,8 +23,8 @@
                 </div>
 
                 <ul class="hidden list-none sm:flex items-center gap-5 md:gap-8">
-                    <li><a href="#" class="hover:font-bold">Home</a></li>
-                    <li class="flex"><span class="material-symbols-outlined">
+                    <li><a href="index.html" class="hover:font-bold">Home</a></li>
+                    <li class="flex"><span id="mode" class="material-symbols-outlined">
                             lightbulb
                         </span></li>
                 </ul>
@@ -37,10 +37,10 @@
         <section class="max-w-[1200px] w-[90%] mx-auto my-8 ">
             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZhR7pcge1XisWuB1A318TMcPG-dmwApN_bKbQqVnWGUTj4k_Z6ZCOw58aUBkePm1wmMiVoCDZzm9mFuDHOYSMZR09OWZvTzelSLM7ryfFYPTX5a9IEKCdsvawexx7irmgNp1ZkfH6G498t7CW7klN509-f02yIX9tRkus2G1_SQTnyQ37-4KLj0l0xUTL839ZPHfuZQ6T65x_XNaiyUhrW4prS0qClWviPCdRNGne7QzyhWbrPv6WslPzsL0n5QacHTSAv1imSiU"
                 alt="human Typing" class="w-full h-[200px] object-cover rounded-2xl">
-            <form class="w-full flex flex-col gap-5 my-5 sm:max-w-[60%]">
-                <input type="text" placeholder="Description" class="w-full rounded-md px-5 py-3 bg-gray-50 dark:bg-[#1E1E1E]">
-                <input type="text" placeholder="Amount" class="w-full rounded-md px-5 py-3 bg-gray-50 dark:bg-[#1E1E1E]">
-                <div class="flex items-center gap-5">
+            <form class="w-full flex flex-col gap-5 my-5 sm:max-w-[60%]" name="expense-form">
+                <input name="description" type="text" placeholder="Description" class="w-full rounded-md px-5 py-3 bg-gray-50 dark:bg-[#1E1E1E]">
+                <input name="amount" type="text" placeholder="Amount" class="w-full rounded-md px-5 py-3 bg-gray-50 dark:bg-[#1E1E1E]">
+                <div class="flex items-center gap-5" id="radio">
                     <div class="flex items-center gap-3">
                         <input type="radio" id="income" name="category" value="Income">
                         <label for="income">Income</label>
@@ -52,12 +52,12 @@
                 </div>
 
                 <div class="flex items-center gap-5">
-                    <a href="#"
+                    <button type="submit"
                 class="inline-block bg-[#19a1e5] text-white px-3 py-2.5 font-bold rounded-md dark:bg-green-600">
-                Submit</a>
-                    <a href="#"
+                Submit</button>
+                    <button type="reset"
                 class="inline-block bg-green-600 text-white px-3 py-2.5 font-bold rounded-md dark:bg-[#19a1e5]">
-                Reset</a>
+                Reset</button>
                 </div>
             </form>
         </section>

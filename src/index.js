@@ -107,7 +107,7 @@ const renderingTransactionTable = (data) => {
                 td.append(text)
             }
             else {
-                td.innerHTML = '<span><a href="#">Edit</a></span> | <span><a href="#">Delete</a></span>'
+                td.innerHTML = `<span><a href="expense-form.html?action=edit&id=${value.id}">Edit</a></span> | <span><a href="expense-form.html?action=delete&id=${value.id}">Delete</a></span>`
             }
             td.className = 'border border-gray-300 text-center p-4';
             tr.append(td)
@@ -243,6 +243,8 @@ async function main() {
         bindingData('All', transactions)
     }
     else {
+        const addTransactionBtn = document.getElementById('addTransaction');
+        addTransactionBtn.classList.add('hidden')
         const dashboard = document.getElementById('dashboard');
         dashboard.classList.add('hidden')
         const filters = document.querySelector('#filters');
