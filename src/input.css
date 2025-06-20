@@ -2,9 +2,16 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@layer utilities{
-    .icon-outlined {font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24;}
+@layer utilities {
+    .icon-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24;
+    }
 
-.icon-filled {font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;}
+    .icon-filled {
+        font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+    }
 
+    .active {
+        @apply bg-white rounded-2xl font-extrabold text-black grow-1
+    }
 }
