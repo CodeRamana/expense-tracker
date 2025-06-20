@@ -4,6 +4,8 @@ const getTransactions = async () => {
     try {
         const response = await fetch(api);
         const data = await response.json();
+        //storing the data in local storage
+        localStorage.setItem("transactions", JSON.stringify(data))
         return data
     }
     catch (err) {
@@ -41,17 +43,17 @@ const createMenuItems = (items) => {
 }
 
 //creating Dynamic list of Transaction Details
-const renderingTransactionList = (data) =>{
-const transactionList = document.getElementById("list");
-transactionList.innerHTML = "";
-  
+const renderingTransactionList = (data) => {
+    const transactionList = document.getElementById("list");
+    transactionList.innerHTML = "";
 
-    data.forEach((value)=>{
-        
+
+    data.forEach((value) => {
+
         const list = document.createElement('div');
         list.className = "flex justify-between items-center bg-gray-50 px-3 py-2 rounded-2xl dark:bg-[#1E1E1E]";
         const leftDiv = document.createElement('div');
-        leftDiv.className ="flex flex-col items-start gap-1.5";
+        leftDiv.className = "flex flex-col items-start gap-1.5";
 
         const date = new Date(value["createdAt"]);
         const dateFormat = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
@@ -62,35 +64,34 @@ transactionList.innerHTML = "";
         descriptionEl.className = "text-xl font-extrabold dark:text-green-500";
         descriptionEl.innerText = value["description"];
 
-        leftDiv.append(dateEl,descriptionEl);
+        leftDiv.append(dateEl, descriptionEl);
 
         const rightDiv = document.createElement('div');
-        rightDiv.className ="flex flex-col items-end gap-1.5";
+        rightDiv.className = "flex flex-col items-end gap-1.5";
 
         const categoryEl = document.createElement('p');
         categoryEl.innerText = value["category"];
 
         const amountEl = document.createElement('p');
-        amountEl.className ="bg-white px-3 py-2 text-xl font-extrabold rounded-xl dark:text-black";
+        amountEl.className = "bg-white px-3 py-2 text-xl font-extrabold rounded-xl dark:text-black";
         amountEl.innerText = value["amount"];
 
-        rightDiv.append(categoryEl,amountEl);
+        rightDiv.append(categoryEl, amountEl);
 
-        list.append(leftDiv,rightDiv)
+        list.append(leftDiv, rightDiv)
         transactionList.appendChild(list)
     })
 
 }
 
 // creating dynamic table row data and appending to table's body element.
-const renderingTransactionTable = (data)=>{
-const table = document.querySelector('table');
+const renderingTransactionTable = (data) => {
+    const table = document.querySelector('table');
     const tableBody = [...table.children].filter((value) => value.tagName === 'TBODY').length === 0 ? document.createElement('tbody') : document.querySelector('table > tbody')
     tableBody.innerHTML = "";
 
     data.forEach((value) => {
         const tr = document.createElement('tr');
-        console.log(Object.keys(value));
         Object.keys(value).forEach((key) => {
             const td = document.createElement('td');
             if (key !== 'id') {
@@ -105,8 +106,8 @@ const table = document.querySelector('table');
                 }
                 td.append(text)
             }
-            else{
-                td.innerHTML='<span><a href="#">Edit</a></span> | <span><a href="#">Delete</a></span>'
+            else {
+                td.innerHTML = '<span><a href="#">Edit</a></span> | <span><a href="#">Delete</a></span>'
             }
             td.className = 'border border-gray-300 text-center p-4';
             tr.append(td)
@@ -120,12 +121,44 @@ const table = document.querySelector('table');
 //binding the data in the Ui Dynamically based on the filter
 const bindingData = (filters, transactions) => {
     const data = filters === 'All' ? transactions : transactions.filter((value) => value.category === filters);
-    renderingTransactionList(data);
-    renderingTransactionTable(data);
+    //no data found against filtered
+    if (data.length === 0) {
+        const list = document.querySelector('#list');
+        list.classList.add('hidden')
+
+        const table = document.querySelector('table');
+        table.style.display = 'none';
+
+        const noTransactions = document.getElementById("noTransactions");
+        noTransactions.classList.remove("hidden");
+
+        const transactionImage = noTransactions.children[0]
+        transactionImage.src = "https://lh3.googleusercontent.com/aida-public/AB6AXuAKaA8c8UEYWiFgAG6bppQVOSd5QIvdDUS3PusZMi4fbl-XUoI77XhvHK1ZE5tVe6Vffb7-2ArjDfTE08gpk7-VR1BfxZ-Q1OpaibWX7pfeOHKXTMkxf1H-AwSXviRgjFCPZ1X9u2SESkG5s_4dd4LRtswYDI2_8UfB13ZRCpio6KsbcS_GEMO38GbUCBN_wdeXXS_PNMoficXDrnmx0eg4oFbp6yftuGmDOTrgunaSG1ghjlnKzPXaxKdBSOCQr5iWhu994VrxiKE";
+
+        const transactionMessage = noTransactions.children[1];
+        transactionMessage.children[0].innerText = "No transactions found";
+        transactionMessage.children[1].innerText = "No transactions match your current filter criteria.";
+    }
+    else {
+        //filtered data
+
+        const list = document.querySelector('#list');
+        list.classList.remove('hidden')
+
+        const table = document.querySelector('table');
+        table.style.display = '';
+
+        const noTransactions = document.getElementById("noTransactions");
+        noTransactions.classList.add("hidden");
+        renderingTransactionList(data);
+        renderingTransactionTable(data);
+    }
+
 }
 
 //logic for Dynamic Dashboard
-const setDashboard = (filterTabs,transactions)=>{
+const setDashboard = (filterTabs, transactions) => {
+    // transactions total of Income and Expense Object Constuction logic
     const reduced = transactions.reduce((p, c) => {
         const category = c.category
         if (p[category]) {
@@ -135,22 +168,26 @@ const setDashboard = (filterTabs,transactions)=>{
         }
         return p;
     }, {})
- const income = document.getElementById("Income")
+
+    //binding the reduced total Income and expense data
+    const income = document.getElementById("Income")
     const expense = document.getElementById("Expense")
     const balance = document.getElementById("Balance")
 
     income.textContent = `Rs: ${reduced.Income}`;
-    expense.textContent = `Rs: -${reduced.Expense}`;
-    balance.textContent = `Rs: ${reduced.Income - reduced.Expense}`;
+    expense.textContent = `Rs: - ${reduced.Expense ?? 0}`;
+    balance.textContent = `Rs: ${reduced.Income - (reduced.Expense ?? 0)}`;
 
+    //indicating the net balance in image dynamically.
     document.getElementById("indicator").src = (reduced.Income > reduced.Expense) ? "../assets/rocket.png" : "../assets/cartoon.jpg";
 
-     const dashBoardBtn = document.querySelectorAll('#dashboard > div > div > a');
+    // filtering the transactions data from the buttons in Dashboard
+    const dashBoardBtn = document.querySelectorAll('#dashboard > div > div > a');
     dashBoardBtn.forEach((value) => {
         value.addEventListener('click', (event) => {
             const btn = event.target;
             const btnValue = btn.tagName === 'A' ? btn.innerText : btn.parentElement.innerText;
-            console.log(btnValue.split(" ")[0])
+
             for (let i = 0; i < filterTabs.length; i++) {
                 filterTabs[i].classList.remove('active');
             }
@@ -182,8 +219,8 @@ async function main() {
         }
     });
 
-     const transactions = await getTransactions();
-    //  const transactions = [];
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || await getTransactions();
+    //const transactions = [];
     if (transactions.length !== 0) {
         createMenuItems([{ name: "Home", href: "" },
         { name: "Dashboard", href: "#dashboard" },
@@ -197,24 +234,27 @@ async function main() {
         noTransactions.classList.add("hidden");
         const filters = document.getElementById("filters");
 
-    const filterTabs = filters.children;
+        const filterTabs = filters.children;
 
-    setDashboard(filterTabs,transactions)
+        setDashboard(filterTabs, transactions)
 
-    setActiveTabs(filterTabs, transactions)
+        setActiveTabs(filterTabs, transactions)
 
-    bindingData('All', transactions)
+        bindingData('All', transactions)
     }
-    else{
+    else {
         const dashboard = document.getElementById('dashboard');
         dashboard.classList.add('hidden')
-        const table = document.querySelector('table');
-        table.style.display = 'none'
         const filters = document.querySelector('#filters');
         filters.style.display = 'none'
+        const list = document.querySelector('#list');
+        list.style.display = 'none'
+        const table = document.querySelector('table');
+        table.style.display = 'none'
+
     }
 
-    
+
 }
 
 main();
