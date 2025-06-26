@@ -5,6 +5,11 @@ const handleForm = (action, id) => {
         const formData = new FormData(formEl)
         const data = Object.fromEntries(formData.entries())
         console.log(data)
+        if(action !== "delete" && (!data.description || !data.category || !data.amount) ){
+            console.log(data);
+            return;
+        }
+
         const transactions = JSON.parse(localStorage.getItem("transactions"));
         if (action === "create") {
 
