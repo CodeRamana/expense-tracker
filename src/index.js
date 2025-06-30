@@ -64,7 +64,10 @@ const renderingTransactionList = (data) => {
         descriptionEl.className = "text-xl font-extrabold dark:text-green-500";
         descriptionEl.innerText = value["description"];
 
-        leftDiv.append(dateEl, descriptionEl);
+        const actionEl = document.createElement('p');
+        actionEl.innerHTML =  `<span><a href="expense-form.html?action=edit&id=${value.id}">Edit</a></span> | <span><a href="expense-form.html?action=delete&id=${value.id}">Delete</a></span>`;
+
+        leftDiv.append(dateEl, descriptionEl,actionEl);
 
         const rightDiv = document.createElement('div');
         rightDiv.className = "flex flex-col items-end gap-1.5";
@@ -162,9 +165,9 @@ const setDashboard = (filterTabs, transactions) => {
     const reduced = transactions.reduce((p, c) => {
         const category = c.category
         if (p[category]) {
-            p[category] = p[category] + c.amount;
+            p[category] = p[category] + parseInt(c.amount);
         } else {
-            p[category] = c.amount;
+            p[category] = parseInt(c.amount);
         }
         return p;
     }, {})
@@ -220,7 +223,7 @@ async function main() {
     });
 
     const transactions = JSON.parse(localStorage.getItem("transactions")) || await getTransactions();
-    //const transactions = [];
+    console.log(transactions)
     if (transactions.length !== 0) {
         createMenuItems([{ name: "Home", href: "" },
         { name: "Dashboard", href: "#dashboard" },
