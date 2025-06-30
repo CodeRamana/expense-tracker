@@ -89,7 +89,7 @@ const deleteTransaction = async (id) => {
 
         if (response) {
             handleReset();
-            window.history.back();
+            window.location.href = '/';
         }
     }
     catch (err) {
