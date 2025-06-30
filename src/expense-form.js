@@ -55,7 +55,7 @@ const createTransaction = async (result) => {
 
         if (response) {
             handleReset();
-            window.history.back();
+           window.location.href = '/';
         }
     }
     catch (err) {
@@ -73,7 +73,7 @@ const updateTransaction = async (result, id) => {
 
         if (response) {
             handleReset();
-            window.history.back();
+            window.location.href = '/';
         }
     }
     catch (err) {
